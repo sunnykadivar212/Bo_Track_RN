@@ -14,14 +14,14 @@ import {constant} from '../../config/constant';
 export default function LoginScreen() {
   return (
     <View style={styles.maincontainer}>
-      {/* Background Colors */}
       <View style={styles.topContainer} />
       <View style={styles.bottomContainer} />
 
-      {/* Centered Content */}
       <View style={styles.contentContainer}>
         <View style={styles.logoContainer}>
-          <Image source={{uri: 'your-logo-url'}} style={styles.logo} />
+          <View style={{backgroundColor:'white',padding:8}}>
+          <Image source={require('../../Assets/logo.png')} style={styles.logo} resizeMode='contain'/>
+          </View>
           <Text style={styles.title}>Sign in to your Account</Text>
           <Text style={styles.subtitle}>
             Enter your email and password to log in
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   logo: {
-    width: 60,
+    width: 300,
     height: 60,
     marginBottom: 10,
   },
@@ -115,10 +115,11 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     color: '#ffffff',
+    marginTop:20
   },
   subtitle: {
     fontSize: 14,
-    color: '#d9d9d9',
+    color: '#fff',
   },
 
   container: {
