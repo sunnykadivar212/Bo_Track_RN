@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+<base-config cleartextTrafficPermitted="true">
+    <trust-anchors>
+        <certificates src="user"/>
+        <certificates src="system"/>
+    </trust-anchors>
+</base-config>
+<domain-config cleartextTrafficPermitted="true">
+    <domain includeSubdomains="true">staging.botrak.co</domain>
+    <domain includeSubdomains="true">staging.botrak.co/organizations</domain>
+    <domain includeSubdomains="true">staging.botrak.co/api/v1/organizations</domain>
+    <domain includeSubdomains="true">localhost</domain>
+    <domain includeSubdomains="true">192.168.0.103</domain>
+    <trust-anchors>
+        <certificates src="@raw/staging_botrak"/>
+    </trust-anchors>
+</domain-config>
+</network-security-config>

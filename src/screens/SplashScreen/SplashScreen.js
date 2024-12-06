@@ -1,25 +1,36 @@
-import React, { useEffect } from 'react';
-import { View, StyleSheet, Image, ActivityIndicator } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { useNavigation } from '@react-navigation/native';
+import React, {useEffect} from 'react';
+import {View, StyleSheet, Image, ActivityIndicator} from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
+import {useNavigation} from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const SplashScreen = () => {
   const navigation = useNavigation();
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      navigation.replace('loginScreen'); 
-    }, 2000);
+    const checkTokenAndNavigate = async () => {
+      try {
+        const token = await AsyncStorage.getItem('authentication_token');
+        if (token) {
+          navigation.replace('Demo');
+        } else {
+          navigation.replace('LoginScreen');
+        }
+      } catch (error) {
+        console.error('Error checking authentication token:', error);
+        navigation.replace('LoginScreen');
+      }
+    };
 
-    return () => clearTimeout(timer);
+    checkTokenAndNavigate();
   }, [navigation]);
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
-        <Image 
-          source={require('../../Assets/splash.png')} 
-          style={styles.logo} 
+        <Image
+          source={require('../../Assets/splash.png')}
+          style={styles.logo}
         />
         <ActivityIndicator size="large" color="#3366ff" style={styles.loader} />
       </View>
@@ -38,9 +49,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   logo: {
-    width: 300, 
-    height: 200, 
-    resizeMode: 'contain', 
+    width: 300,
+    height: 200,
+    resizeMode: 'contain',
     marginBottom: 20,
   },
   loader: {

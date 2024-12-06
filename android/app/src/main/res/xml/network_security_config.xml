@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">staging.botrak.co
+        </domain>
+        <trust-anchors>
+            <certificates src="@raw/staging_botrak"/>
+        </trust-anchors>
+    </domain-config>
+</network-security-config>
