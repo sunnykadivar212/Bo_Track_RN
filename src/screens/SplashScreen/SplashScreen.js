@@ -12,7 +12,7 @@ const SplashScreen = () => {
       try {
         const token = await AsyncStorage.getItem('authentication_token');
         if (token) {
-          navigation.replace('Demo');
+          navigation.replace('DrawerNavigation');
         } else {
           navigation.replace('LoginScreen');
         }

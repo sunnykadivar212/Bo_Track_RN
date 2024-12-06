@@ -65,7 +65,7 @@ const LoginScreen = ({navigation}) => {
         } catch (storageError) {
           console.error('Failed to store token:', storageError);
         }
-        navigation.navigate('Demo');
+        navigation.navigate('DrawerNavigation');
       } else {
         throw new Error('Login failed');
       }
